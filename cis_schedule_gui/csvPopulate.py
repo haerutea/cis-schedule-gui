@@ -50,17 +50,10 @@ block_times = {
 
 
 def create_schedule():
-  # schedule = open('my_schedule.csv', 'w')
-  # with schedule:
-  #   writer = csv.writer(schedule)
-  #   writer.writerows(full_schedule)
-  # tempSchedule = NamedTemporaryFile()
-  # writer = csv.writer(tempSchedule)
-  # writer.writerows(full_schedule)
-  handle, filepath = mkstemp(suffix='.csv')
+  handle, filepath = mkstemp(suffix='.csv') #make temp file
   with open(filepath, 'w') as tempSchedule:
     writer = csv.writer(tempSchedule)
-    writer.writerows(full_schedule)
+    writer.writerows(full_schedule) #write data
     tempSchedule.seek(0) #go back to beginning of file
   
   #prob not best practice but it works for now
