@@ -76,7 +76,6 @@ def make_dates(start_day, end_day, year, timetable):
 
   # loop through each month for the school year
   for month, day in SCHOOL_MONTHS.items():
-    print(month, ":", day)
 
     # increase year at January
     if month == "january":
@@ -116,7 +115,6 @@ def make_dates(start_day, end_day, year, timetable):
                         block_times[block_num][BLOCK_END],
                         class_info
                         ]
-          print(final_info)
 
           # write to csv
           full_schedule.append(final_info)
