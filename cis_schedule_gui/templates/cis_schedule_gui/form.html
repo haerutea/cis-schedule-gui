@@ -16,14 +16,14 @@
         <table>
             {% for form in formset %}
             <tr>
-                <th><label>{{ days|index:forloop.counter0 }}</label></th>
+                <th><label class="dayLabel">{{ days|index:forloop.counter0 }}</label></th>
             </tr>
                 <tr>
                     {% for field in form.visible_fields %}
                         <td><label class="periodField">{{ field.label }}:</label></td>
                         <td>{{ field }}</td>
                     {% endfor %}
-                  </tr>
+                </tr>
             {% endfor %}
         </table>
         <button type="submit">Submit</button>

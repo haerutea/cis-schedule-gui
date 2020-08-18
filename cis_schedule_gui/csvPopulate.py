@@ -1,4 +1,6 @@
 import csv
+from tempfile import NamedTemporaryFile, mkstemp
+from django.http import HttpResponse
 
 full_schedule = [["Start date", "Start time", "End time", "Subject"]]
 
@@ -27,7 +29,7 @@ SCHOOL_MONTHS = {"august": 31, "september": 30, "october": 31, "november": 30, "
 no_school = ["24/09", "1/10", "2/10","19/10", "20/10", "21/10", "22/10", "23/10", "26/10", "13/11", "16/11", "20/11", ]
 
 # this is my timetable for this year. The user would only need to modify this with GUI
-timetable = {
+timetableExample = {
   "A1" : {"12 CS HL/SL": "Block_3", "11 CS": "Block_4"},
   "B1" : {"12 CS HL/SL": "Block_1", "12 CS HL": "Block_2", "13 CS HL/SL": "Block_4"}, 
   "A2" : {"11 CS": "Block_1", "12 CS HL/SL": "Block_4"}, 
@@ -40,20 +42,32 @@ timetable = {
 
 # used in line 107 and 108 to build final array for csv line
 block_times = {
-  "Block_1": (block_one_start, block_one_end),
-  "Block_2": (block_two_start, block_two_end),
-  "Block_3": (block_three_start, block_three_end),
-  "Block_4": (block_four_start, block_four_end)
+  "period1": (block_one_start, block_one_end),
+  "period2": (block_two_start, block_two_end),
+  "period3": (block_three_start, block_three_end),
+  "period4": (block_four_start, block_four_end)
 }
 
 
 def create_schedule():
-  schedule = open('my_schedule.csv', 'w')
-  with schedule:
-    writer = csv.writer(schedule)
+  # schedule = open('my_schedule.csv', 'w')
+  # with schedule:
+  #   writer = csv.writer(schedule)
+  #   writer.writerows(full_schedule)
+  # tempSchedule = NamedTemporaryFile()
+  # writer = csv.writer(tempSchedule)
+  # writer.writerows(full_schedule)
+  handle, filepath = mkstemp(suffix='.csv')
+  with open(filepath, 'w') as tempSchedule:
+    writer = csv.writer(tempSchedule)
     writer.writerows(full_schedule)
+    tempSchedule.seek(0) #go back to beginning of file
+  
+  response = HttpResponse(open(filepath, "rb"), content_type="text/csv")
+  response["Content-Disposition"] = "attachment; filename=my_schedule.csv"
+  return response
 
-def make_dates(start_day, end_day, year):
+def make_dates(start_day, end_day, year, timetable):
   curr_day = start_day
 
   # For Month String Formatting
@@ -127,5 +141,5 @@ def make_dates(start_day, end_day, year):
 
 
 # main call 
-make_dates(24, 15, 2020)
-create_schedule()
+# make_dates(24, 15, 2020)
+# create_schedule()
