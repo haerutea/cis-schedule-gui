@@ -63,6 +63,7 @@ def create_schedule():
     writer.writerows(full_schedule)
     tempSchedule.seek(0) #go back to beginning of file
   
+  #prob not best practice but it works for now
   response = HttpResponse(open(filepath, "rb"), content_type="text/csv")
   response["Content-Disposition"] = "attachment; filename=my_schedule.csv"
   return response
