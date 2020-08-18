@@ -26,7 +26,7 @@ SECRET_KEY = 'gbc3&@pg9q(i-57omt-oehr)_evqgd$&#*=pgf%=n=si2+i1=+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["cisschedule.herokuapp.com"]
 
 
 # Application definition
