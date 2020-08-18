@@ -1,9 +1,31 @@
 {% extends "cis_schedule_gui/layout.html" %}
 
 {% block body %}
+<!-- <form id="classes">
     <h2>A1</h2>
+
     {% for field in form %}
+        <label class="periodField" for="{{ field.auto_id }}">{{ field.label }}</label>
         {{ field }}
     {% endfor %}
-
+</form> -->
+    {% load index %}
+    <form id="classes" method="POST">
+        {% csrf_token %}
+        {{ formset.management_form }}
+        <table>
+            {% for form in formset %}
+            <tr>
+                <th><label>{{ days|index:forloop.counter0 }}</label></th>
+            </tr>
+                <tr>
+                    {% for field in form.visible_fields %}
+                        <td><label class="periodField">{{ field.label }}:</label></td>
+                        <td>{{ field }}</td>
+                    {% endfor %}
+                  </tr>
+            {% endfor %}
+        </table>
+        <button type="submit">Submit</button>
+    </form>
 {% endblock %}

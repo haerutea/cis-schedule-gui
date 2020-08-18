@@ -1,7 +1,7 @@
 from django import forms
 
 class ClassesForm(forms.Form):
-    block1 = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'blockField'}))
-    block2 = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'blockField'}))
-    block3 = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'blockField'}))
-    block4 = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'blockField'}))
+    period1 = forms.CharField(required=False, max_length=100, label="Period 1", widget=forms.TextInput(attrs={'class': 'periodField'}))
+    period2 = forms.CharField(required=False, max_length=100, label="Period 2", widget=forms.TextInput(attrs={'class': 'periodField'}))
+    period3 = forms.CharField(required=False, max_length=100, label="Period 3", widget=forms.TextInput(attrs={'class': 'periodField'}))
+    period4 = forms.CharField(required=False, max_length=100, label="Period 4", widget=forms.TextInput(attrs={'class': 'periodField'}))
