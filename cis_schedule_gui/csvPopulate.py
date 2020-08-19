@@ -74,6 +74,8 @@ def make_dates(start_day, end_day, year, timetable):
   school_day_idx = 0
   week_day_idx = 0
 
+  RESTART_DATE = "27/10"
+
   # loop through each month for the school year
   for month, day in SCHOOL_MONTHS.items():
 
@@ -104,7 +106,8 @@ def make_dates(start_day, end_day, year, timetable):
         week_day_idx += 1
         continue
       else:
-
+        if curr_date == RESTART_DATE:
+          school_day_idx = 0
         # get which A or B day this is in the calendar
         ab_day = SCHOOL_DAYS[school_day_idx]
 
