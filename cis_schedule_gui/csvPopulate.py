@@ -26,7 +26,8 @@ BLOCK_END = 1
 
 SCHOOL_MONTHS = {"august": 31, "september": 30, "october": 31, "november": 30, "december": 31, "january": 31,}
 
-no_school = ["24/09", "1/10", "2/10","19/10", "20/10", "21/10", "22/10", "23/10", "26/10", "13/11", "16/11", "20/11", ]
+no_school = ["24/09", "1/10", "2/10","19/10", "20/10", "21/10", "22/10", "23/10", "26/10", "13/11", "16/11", "20/11", "18/12", "21/12", "22/12", "23/12", "24/12", "25/12", "28/12", "29/12", "30/12", "31/12", "1/01",
+ "4/01"]
 
 # this is my timetable for this year. The user would only need to modify this with GUI
 timetableExample = {
