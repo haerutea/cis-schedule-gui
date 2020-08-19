@@ -22,9 +22,9 @@ block_four_end = "3:00 PM"
 BLOCK_START = 0
 BLOCK_END = 1
 
-SCHOOL_MONTHS = {"august": 31, "september": 30, "october": 31, "november": 30, "december": 31, "january": 31, "february": 28, "march": 31, "april": 30, "may": 31, "june": 30}
+# SCHOOL_MONTHS = {"august": 31, "september": 30, "october": 31, "november": 30, "december": 31, "january": 31, "february": 28, "march": 31, "april": 30, "may": 31, "june": 30}
 
-#SCHOOL_MONTHS = {"august": 31, "september": 30, "october": 31, "november": 30, "december": 31, "january": 31,}
+SCHOOL_MONTHS = {"august": 31, "september": 30, "october": 31, "november": 30, "december": 31, "january": 31,}
 
 no_school = ["24/09", "1/10", "2/10","19/10", "20/10", "21/10", "22/10", "23/10", "26/10", "13/11", "16/11", "20/11", ]
 
