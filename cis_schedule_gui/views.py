@@ -21,7 +21,7 @@ def index(request):
                         day[className] = period #adds {class: period} to day
                 timetable[days[dayNum]] = day
             formset = ClassesFormset() #refreshes input
-            make_dates(24, 15, 2020, timetable)
+            make_dates(24, "21/01", 2020, timetable)
             response = create_schedule()
             
             return response #prompts download

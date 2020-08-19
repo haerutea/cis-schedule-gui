@@ -90,6 +90,9 @@ def make_dates(start_day, end_day, year, timetable):
       # get date in DD/MM format
       curr_date = str(in_sess) + "/" + MONTH_DAY[month]
 
+      if curr_date == end_day:
+        break
+
       # ignore weekends
       if curr_day == "saturday":
         week_day_idx += 1
