@@ -2,7 +2,7 @@ import csv
 from tempfile import NamedTemporaryFile, mkstemp
 from django.http import HttpResponse
 
-full_schedule = [["Start date", "Start time", "End time", "Subject"]]
+full_schedule = [["Start date", "Start time", "End Date", "End time", "Subject"]]
 
 block_one_start = "7:55 AM"
 block_one_end = "9:05 AM"
@@ -115,6 +115,7 @@ def make_dates(start_day, end_day, year, timetable):
         for class_info, block_num in timetable[ab_day].items():
           final_info = [start_date_str, 
                         block_times[block_num][BLOCK_START],
+                        start_date_str,
                         block_times[block_num][BLOCK_END],
                         class_info
                         ]
