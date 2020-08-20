@@ -1,6 +1,7 @@
 import csv
 from tempfile import NamedTemporaryFile, mkstemp
 from django.http import HttpResponse
+import os
 
 full_schedule = [["Start date", "Start time", "End Date", "End time", "Subject"]]
 
@@ -60,6 +61,7 @@ def create_schedule():
   #prob not best practice but it works for now
   response = HttpResponse(open(filepath, "rb"), content_type="text/csv")
   response["Content-Disposition"] = "attachment; filename=my_schedule.csv"
+
   return response
 
 def make_dates(start_day, end_day, year, timetable):
