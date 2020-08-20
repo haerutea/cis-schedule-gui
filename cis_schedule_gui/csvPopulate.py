@@ -3,13 +3,6 @@ from tempfile import NamedTemporaryFile, mkstemp
 from django.http import HttpResponse
 import os
 
-<<<<<<< HEAD
-global full_schedule
-full_schedule = [["Start date", "Start time", "End time", "Subject"]]
-=======
-full_schedule = [["Start date", "Start time", "End Date", "End time", "Subject"]]
->>>>>>> 7cf1c97572d2047616f836a2ccdbce141129ca70
-
 block_one_start = "7:55 AM"
 block_one_end = "9:05 AM"
 
@@ -56,15 +49,12 @@ block_times = {
 }
 
 
-def create_schedule():
+def create_schedule(full_schedule):
   handle, filepath = mkstemp(suffix='.csv') #make temp file
   with open(filepath, 'w') as tempSchedule:
     writer = csv.writer(tempSchedule)
-    global full_schedule
     writer.writerows(full_schedule) #write data
-    print(full_schedule)
     tempSchedule.seek(0) #go back to beginning of file
-    full_schedule = [["Start date", "Start time", "End time", "Subject"]]
   
   #prob not best practice but it works for now
   response = HttpResponse(open(filepath, "rb"), content_type="text/csv")
@@ -73,6 +63,7 @@ def create_schedule():
   return response
 
 def make_dates(start_day, end_day, year, timetable):
+  full_schedule = [["Start date", "Start time", "End Date", "End time", "Subject"]]
   curr_day = start_day
 
   # For Month String Formatting
@@ -148,6 +139,7 @@ def make_dates(start_day, end_day, year, timetable):
     
     #reset day of the month, 1, 2, 3...
     curr_day = 1
+  return full_schedule
 
 
 # main call 

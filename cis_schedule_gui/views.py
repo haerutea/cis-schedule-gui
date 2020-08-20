@@ -21,8 +21,8 @@ def index(request):
                         day[className] = period #adds {class: period} to day
                 timetable[days[dayNum]] = day
             formset = ClassesFormset() #refreshes input
-            make_dates(24, "21/01", 2020, timetable)
-            response = create_schedule()
+            full_schedule = make_dates(24, "21/01", 2020, timetable)
+            response = create_schedule(full_schedule)
             
             return response #prompts download
     return render(request, "templates/cis_schedule_gui/form.html", {
