@@ -2,6 +2,7 @@ import csv
 from tempfile import NamedTemporaryFile, mkstemp
 from django.http import HttpResponse
 
+global full_schedule
 full_schedule = [["Start date", "Start time", "End time", "Subject"]]
 
 block_one_start = "7:55 AM"
@@ -53,8 +54,11 @@ def create_schedule():
   handle, filepath = mkstemp(suffix='.csv') #make temp file
   with open(filepath, 'w') as tempSchedule:
     writer = csv.writer(tempSchedule)
+    global full_schedule
     writer.writerows(full_schedule) #write data
+    print(full_schedule)
     tempSchedule.seek(0) #go back to beginning of file
+    full_schedule = [["Start date", "Start time", "End time", "Subject"]]
   
   #prob not best practice but it works for now
   response = HttpResponse(open(filepath, "rb"), content_type="text/csv")
