@@ -1,9 +1,14 @@
 import csv
 from tempfile import NamedTemporaryFile, mkstemp
 from django.http import HttpResponse
+import os
 
+<<<<<<< HEAD
 global full_schedule
 full_schedule = [["Start date", "Start time", "End time", "Subject"]]
+=======
+full_schedule = [["Start date", "Start time", "End Date", "End time", "Subject"]]
+>>>>>>> 7cf1c97572d2047616f836a2ccdbce141129ca70
 
 block_one_start = "7:55 AM"
 block_one_end = "9:05 AM"
@@ -23,11 +28,12 @@ block_four_end = "3:00 PM"
 BLOCK_START = 0
 BLOCK_END = 1
 
-SCHOOL_MONTHS = {"august": 31, "september": 30, "october": 31, "november": 30, "december": 31, "january": 31, "february": 28, "march": 31, "april": 30, "may": 31, "june": 30}
+# SCHOOL_MONTHS = {"august": 31, "september": 30, "october": 31, "november": 30, "december": 31, "january": 31, "february": 28, "march": 31, "april": 30, "may": 31, "june": 30}
 
-#SCHOOL_MONTHS = {"august": 31, "september": 30, "october": 31, "november": 30, "december": 31, "january": 31,}
+SCHOOL_MONTHS = {"august": 31, "september": 30, "october": 31, "november": 30, "december": 31, "january": 31,}
 
-no_school = ["24/09", "1/10", "2/10","19/10", "20/10", "21/10", "22/10", "23/10", "26/10", "13/11", "16/11", "20/11", ]
+no_school = ["24/09", "1/10", "2/10","19/10", "20/10", "21/10", "22/10", "23/10", "26/10", "13/11", "16/11", "20/11", "18/12", "21/12", "22/12", "23/12", "24/12", "25/12", "28/12", "29/12", "30/12", "31/12", "1/01",
+ "4/01"]
 
 # this is my timetable for this year. The user would only need to modify this with GUI
 timetableExample = {
@@ -63,6 +69,7 @@ def create_schedule():
   #prob not best practice but it works for now
   response = HttpResponse(open(filepath, "rb"), content_type="text/csv")
   response["Content-Disposition"] = "attachment; filename=my_schedule.csv"
+
   return response
 
 def make_dates(start_day, end_day, year, timetable):
@@ -77,6 +84,8 @@ def make_dates(start_day, end_day, year, timetable):
 
   school_day_idx = 0
   week_day_idx = 0
+
+  RESTART_DATE = "27/10"
 
   # loop through each month for the school year
   for month, day in SCHOOL_MONTHS.items():
@@ -94,6 +103,9 @@ def make_dates(start_day, end_day, year, timetable):
       # get date in DD/MM format
       curr_date = str(in_sess) + "/" + MONTH_DAY[month]
 
+      if curr_date == end_day:
+        break
+
       # ignore weekends
       if curr_day == "saturday":
         week_day_idx += 1
@@ -105,7 +117,8 @@ def make_dates(start_day, end_day, year, timetable):
         week_day_idx += 1
         continue
       else:
-
+        if curr_date == RESTART_DATE:
+          school_day_idx = 0
         # get which A or B day this is in the calendar
         ab_day = SCHOOL_DAYS[school_day_idx]
 
@@ -116,6 +129,7 @@ def make_dates(start_day, end_day, year, timetable):
         for class_info, block_num in timetable[ab_day].items():
           final_info = [start_date_str, 
                         block_times[block_num][BLOCK_START],
+                        start_date_str,
                         block_times[block_num][BLOCK_END],
                         class_info
                         ]
