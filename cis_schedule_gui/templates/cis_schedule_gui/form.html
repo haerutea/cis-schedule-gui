@@ -1,7 +1,7 @@
 {% extends "cis_schedule_gui/layout.html" %}
 
 {% block body %}
-<!-- <form id="classes">
+    <!-- <form id="classes">
     <h2>A1</h2>
 
     {% for field in form %}
@@ -10,23 +10,38 @@
     {% endfor %}
 </form> -->
     {% load index %}
-    <form id="classes" method="POST">
-        {% csrf_token %}
-        {{ formset.management_form }}
-        <table>
-            {% for form in formset %}
-            <tr>
-                <th><label class="dayLabel">{{ days|index:forloop.counter0 }}</label></th>
-            </tr>
-                <tr>
-                    {% for field in form.visible_fields %}
-                        <td><label class="periodField">{{ field.label }}:</label></td>
-                        <td>{{ field }}</td>
+    <div class="row justify-content-center main-table">
+        <div class="col-auto">
+            <br></br>
+            <h3>1. Input your schedule in the table below</h3>
+            <br/>
+            <form id="classes" method="POST">
+                {% csrf_token %}
+                {{ formset.management_form }}
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                    <tr>
+                        <th scope="col">Day</th>
+                        <th scope="col">Period 1</th>
+                        <th scope="col">Period 2</th>
+                        <th scope="col">Period 3</th>
+                        <th scope="col">Period 4</th>
+                    </tr>
+                    </thead>
+                    {% for form in formset %}
+                        <tr>
+                            <th scope="row"><label class="dayLabel">{{ days|index:forloop.counter0 }}</label></th>
+                            {% for field in form.visible_fields %}
+                                <td>{{ field }}</td>
+                            {% endfor %}
+                        </tr>
                     {% endfor %}
-                </tr>
-            {% endfor %}
-        </table>
-        <button type="submit">Download CSV File</button>
-        <a class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://calendar.google.com/calendar/r/settings/export">Open Google Calendar Import</a>
-    </form>
+                </table>
+                <button class="btn btn-secondary" type="submit">2. Download CSV File</button>
+            </form>
+            <br/>
+            <a class="btn btn-success" target="_blank" rel="noopener noreferrer"
+               href="https://calendar.google.com/calendar/r/settings/export">3. Open Google Calendar Import</a>
+        </div>
+    </div>
 {% endblock %}
