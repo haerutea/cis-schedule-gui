@@ -52,16 +52,3 @@ MONTH_DAY = {"august": "08", "september": "09", "october": "10", "november": "11
              "january": "01", "february": "02", "march": "03", "april": "04", "may": "05", "june": "06"}
 
 WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-
-
-# this is my timetable for this year.
-timetableExample = {
-    "A1": {"12 CS HL/SL": "Block_3", "11 CS": "Block_4"},
-    "B1": {"12 CS HL/SL": "Block_1", "12 CS HL": "Block_2", "13 CS HL/SL": "Block_4"},
-    "A2": {"11 CS": "Block_1", "12 CS HL/SL": "Block_4"},
-    "B2": {"13 CS HL/SL": "Block_1", "12 CS HL/SL": "Block_2", "12 CS HL": "Block_3", "Planning": "Block_4"},
-    "A3": {"12 CS HL/SL": "Block_1", "11 CS": "Block_2", "12 CS HL": "Block_3"},
-    "B3": {"13 CS HL/SL": "Block_2", "12 CS HL/SL": "Block_3"},
-    "A4": {"12 CS HL/SL": "Block_2", "11 CS": "Block_3"},
-    "B4": {"Planning": "Block_1", "13 CS HL/SL": "Block_3", "12 CS HL/SL": "Block_4"}
-}
