@@ -20,8 +20,7 @@ def index(request):
                 day = {}  # periods in 1 A1/B1 .etc day
                 for period, className in data[dayNum].items():
                     if className:
-                        day[period] = className
-                        # day[className] = period  # adds {class: period} to day
+                        day[period] = className  # adds {period: class} to day
                 timetable[cnst.AB_DAYS[dayNum]] = day
             formset = classes_formset()  # refreshes input
             full_schedule = make_dates(cnst.SEM_FIRST_DAY, cnst.SEM_LAST_DAY, cnst.CURR_YEAR, timetable)
