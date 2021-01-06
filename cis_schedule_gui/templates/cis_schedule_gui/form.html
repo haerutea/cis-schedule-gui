@@ -15,6 +15,7 @@
             <br></br>
             <h3>1. Input your schedule in the table below</h3>
             <p> Leave any free periods blank </p>
+            <span class="badge badge-danger">Currently creates schedule from Jan 21,2020 to Feb 9,2020</span>
             <br/>
             <form id="classes" method="POST">
                 {% csrf_token %}
@@ -38,11 +39,12 @@
                         </tr>
                     {% endfor %}
                 </table>
-                <button class="btn btn-secondary" type="submit">2. Download CSV File (Semester 1 20-21)</button>
+                <button class="btn btn-secondary" type="submit">2. Download CSV File </button>
             </form>
             <br/>
             <a class="btn btn-success" target="_blank" rel="noopener noreferrer"
                href="https://calendar.google.com/calendar/r/settings/export">3. Open Google Calendar Import</a>
+
         </div>
     </div>
 {% endblock %}

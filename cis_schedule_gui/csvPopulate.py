@@ -22,8 +22,11 @@ def make_dates(start_day, end_day, year, timetable):
     full_schedule = [["Start date", "Start time", "End Date", "End time", "Subject"]]
     curr_day = start_day
 
-    school_day_idx = 0
-    week_day_idx = 0
+    # semester starts on B4
+    school_day_idx = 7
+
+    # semester starts on a Thursday
+    week_day_idx = 3
 
     # loop through each month for the school year
     for month, day in cnst.SCHOOL_MONTHS.items():
@@ -54,10 +57,10 @@ def make_dates(start_day, end_day, year, timetable):
             elif curr_date in cnst.NO_SCHOOL:
                 week_day_idx += 1
                 continue
-            elif curr_date in cnst.SEM_FIRST_DATE:
-                week_day_idx += 1
-                school_day_idx += 1
-                continue
+            # elif curr_date in cnst.SEM_FIRST_DATE:
+            #     week_day_idx += 1
+            #     school_day_idx += 1
+            #     continue
             else:
                 if curr_date == cnst.RESTART_DATE:
                     school_day_idx = 0
