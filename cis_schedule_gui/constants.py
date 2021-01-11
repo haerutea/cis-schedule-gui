@@ -1,6 +1,6 @@
 
 # MUST Reset Every Semester
-SCHOOL_MONTHS = {"january": 31, "february": 28, "march": 31, "april": 30, "may": 31, "june": 30 }
+SCHOOL_MONTHS = {"january": 31, "february": 28 }
 RESTART_DATE = "27/10"  # this day resets the AB schedule back to A1
 SEM_FIRST_DATE = "21/01"  # this is the first day of school for the semester, must change for semester two
 SEM_LAST_DAY = "10/02"  # last day of semester, not inclusive
