@@ -23,10 +23,10 @@ def make_dates(start_day, end_day, year, timetable):
     curr_day = start_day
 
     # semester starts on B4
-    school_day_idx = 7
+    school_day_idx = 5
 
     # semester starts on a Thursday
-    week_day_idx = 3
+    week_day_idx = 1
 
     # loop through each month for the school year
     for month, day in cnst.SCHOOL_MONTHS.items():
@@ -63,7 +63,7 @@ def make_dates(start_day, end_day, year, timetable):
             #     continue
             else:
                 if curr_date == cnst.RESTART_DATE:
-                    school_day_idx = 0
+                    school_day_idx = 2
                 # get which A or B day this is in the calendar
                 ab_day = cnst.AB_DAYS[school_day_idx]
 
